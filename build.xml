@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+
+<project name="Hello World Example" default="build" description="This is an example buildfile for Phing.">
+	<target name="prepare">
+		<mkdir dir="reports/coverage"/>
+		<mkdir dir="reports/tests"/>
+		<mkdir dir="docs"/>
+	</target>
+	
+	
+	
+	<target name="test">
+		<phpunit haltonerror="true" haltonfailure="true">
+			<formatter type="plain" usefile="false"/>
+			<batchtest>
+				<fileset dir="src">
+					<include name="*Test.php"/>
+				</fileset>
+			</batchtest>
+		</phpunit>
+	</target>
+	
+	
+	
+	<target name="build" depends="test,prepare">
+		<zip destfile="helloworld.zip" basedir="src"/>
+		<tar destfile="helloworld.tar" basedir="src"/>
+	</target>
+
+	<target name="clean">
+		<delete dir="reports"/>
+		<delete dir="docs"/>
+		<delete file="helloworld.zip"/>
+		<delete file="helloworld.tar"/>
+	</target>
+</project>
