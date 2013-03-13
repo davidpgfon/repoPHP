@@ -23,7 +23,7 @@
 	
 	
 	<target name="build" depends="test,prepare">
-		<exec executable="phing">
+		<exec executable="build">
 		<zip destfile="helloworld.zip" basedir="src"/>
 		<tar destfile="helloworld.tar" basedir="src"/>
 		</exec>
