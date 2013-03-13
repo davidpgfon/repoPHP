@@ -23,10 +23,8 @@
 	
 	
 	<target name="build" depends="test,prepare">
-		<exec executable="build">
 		<zip destfile="helloworld.zip" basedir="src"/>
 		<tar destfile="helloworld.tar" basedir="src"/>
-		</exec>
 	</target>
 
 	<target name="clean">
