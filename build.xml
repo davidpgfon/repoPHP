@@ -19,18 +19,92 @@
 			</batchtest>
 		</phpunit>
 	</target>
+
+
+
+			 
+					<target name="lint-php"
+					  description="Check all PHP files for syntax errors using PHPLint"
+					 >
+				    <phplint haltonfailure="true">
+				      <fileset dir="src">
+					<include name="*.php"/>
+					</fileset>
+				    </phplint>
+				  </target>
+
+					<target name="lint-js"
+					  description="Check all Javascript files using JSlint"
+					 >
+				    <foreach target="jslint-file" param="filename" absparam="absfilename">
+				      <fileset dir="src">
+					<include name="*.js"/>
+					</fileset>
+				    </foreach>
+				  </target>
+
+				  <target name="phpmd"
+					  description="Generate pmd.xml using PHPMD"
+					 >
+
+				    <phpmd rulesets="codesize,naming,design">
+				      <fileset dir="src">
+					<include name="HelloWorld.php"/></fileset>
+				      <formatter type="xml" outfile="reports/pmd.xml"/>
+				    </phpmd>
+				  </target>
+
+
+				  <target name="phpcpd"
+					  description="Generate pmd-cpd.xml using phpcpd"
+					  >
+				    <phpcpd>
+				      <fileset dir="src">
+					<include name="HelloWorld.php"/></fileset>
+				      <formatter type="pmd" outfile="reports/pmd-cpd.xml"/>
+				    </phpcpd>
+				  </target>
+
+				  <target name="phploc"
+					  description="Generate phploc.csv using phploc"
+					  >
+				    <phploc reportType="csv"
+					    reportName="phploc" reportDirectory="reports"
+					    suffixes="php,module,inc,install,profile,test" countTests="true">
+				      <fileset dir="src">
+					<include name="HelloWorld.php"/></fileset>
+				    </phploc>
+				  </target>
+
+				   
+
+				  <target name="phpdoc"
+					  description="Generate API documentation using phpDocumentor">
+				    <mkdir dir="api"/>
+				    <phpdoc title="API Documentation"
+					    destdir="api"
+					    sourcecode="php"
+					    output="HTML:Smarty:PHP">
+				     <fileset dir="src">
+					<include name="HelloWorld.php"/></fileset>
+				    </phpdoc>
+				  </target>
+
+
+
+ 
+  
 	
-	
-	
-	<target name="build" depends="test,prepare">
-		<zip destfile="helloworld.zip" basedir="src"/>
-		<tar destfile="helloworld.tar" basedir="src"/>
-	</target>
 
 	<target name="clean">
 		<delete dir="reports"/>
 		<delete dir="docs"/>
 		<delete file="helloworld.zip"/>
 		<delete file="helloworld.tar"/>
+	</target>
+
+	<target name="build" depends="prepare,lint-php,lint-js,phpmd,phpcpd,phploc,phpdoc,clean,test">
+		<zip destfile="helloworld.zip" basedir="src"/>
+		<tar destfile="helloworld.tar" basedir="src"/>
 	</target>
 </project>
