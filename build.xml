@@ -78,7 +78,7 @@
 
 				   
 
-				  <target name="phpdoc"
+				  /*<target name="phpdoc"
 					  description="Generate API documentation using phpDocumentor">
 				    <mkdir dir="api"/>
 				    <phpdoc title="API Documentation"
@@ -88,7 +88,7 @@
 				     <fileset dir="src">
 					<include name="HelloWorld.php"/></fileset>
 				    </phpdoc>
-				  </target>
+				  </target>*/
 
 
 
