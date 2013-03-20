@@ -78,17 +78,6 @@
 
 				   
 
-				  /*<target name="phpdoc"
-					  description="Generate API documentation using phpDocumentor">
-				    <mkdir dir="api"/>
-				    <phpdoc title="API Documentation"
-					    destdir="api"
-					    sourcecode="php"
-					    output="HTML:Smarty:PHP">
-				     <fileset dir="src">
-					<include name="HelloWorld.php"/></fileset>
-				    </phpdoc>
-				  </target>*/
 
 
 
