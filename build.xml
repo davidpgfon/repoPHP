@@ -87,7 +87,7 @@
 
 	
 
-	<target name="build" depends="prepare,lint-php,lint-js,phpmd,phpcpd,phploc,clean,test">
+	<target name="build" depends="prepare,lint-php,lint-js,phpmd,phpcpd,phploc,test">
 		<zip destfile="helloworld.zip" basedir="src"/>
 		<tar destfile="helloworld.tar" basedir="src"/>
 	</target>
