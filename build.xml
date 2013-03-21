@@ -85,12 +85,7 @@
   
 	
 
-	<target name="clean">
-		<delete dir="reports"/>
-		<delete dir="docs"/>
-		<delete file="helloworld.zip"/>
-		<delete file="helloworld.tar"/>
-	</target>
+	
 
 	<target name="build" depends="prepare,lint-php,lint-js,phpmd,phpcpd,phploc,clean,test">
 		<zip destfile="helloworld.zip" basedir="src"/>
