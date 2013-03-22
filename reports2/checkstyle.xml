@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="1.4.4">
+ <file name="/home/david/repoPHP/src/HelloWorld.php">
+  <error line="2" column="1" severity="error" message="Missing file doc comment" source="PEAR.Commenting.FileComment.Missing"/>
+  <error line="6" column="1" severity="error" message="Missing @category tag in class comment" source="PEAR.Commenting.ClassComment.MissingTag"/>
+  <error line="6" column="1" severity="error" message="Missing @package tag in class comment" source="PEAR.Commenting.ClassComment.MissingTag"/>
+  <error line="6" column="1" severity="error" message="Missing @author tag in class comment" source="PEAR.Commenting.ClassComment.MissingTag"/>
+  <error line="6" column="1" severity="error" message="Missing @license tag in class comment" source="PEAR.Commenting.ClassComment.MissingTag"/>
+  <error line="6" column="1" severity="error" message="Missing @link tag in class comment" source="PEAR.Commenting.ClassComment.MissingTag"/>
+  <error line="7" column="5" severity="error" message="Line indented incorrectly; expected 0 spaces, found 4" source="PEAR.WhiteSpace.ScopeIndent.Incorrect"/>
+  <error line="8" column="5" severity="error" message="Expected 0 spaces before opening brace; 4 found" source="PEAR.Classes.ClassDeclaration.SpaceBeforeBrace"/>
+  <error line="9" column="16" severity="error" message="Line indented incorrectly; expected 4 spaces, found 8" source="PEAR.WhiteSpace.ScopeIndent.Incorrect"/>
+  <error line="9" column="16" severity="error" message="Missing function doc comment" source="PEAR.Commenting.FunctionComment.Missing"/>
+  <error line="11" column="13" severity="error" message="Line indented incorrectly; expected 8 spaces, found 12" source="PEAR.WhiteSpace.ScopeIndent.Incorrect"/>
+  <error line="17" column="9" severity="error" message="Line indented incorrectly; expected 4 spaces, found 8" source="PEAR.WhiteSpace.ScopeIndent.Incorrect"/>
+  <error line="17" column="9" severity="error" message="Missing function doc comment" source="PEAR.Commenting.FunctionComment.Missing"/>
+ </file>
+ <file name="/home/david/repoPHP/src/HelloWorldTest.php">
+  <error line="2" column="1" severity="error" message="Missing file doc comment" source="PEAR.Commenting.FileComment.Missing"/>
+  <error line="9" column="1" severity="error" message="The @author tag is in the wrong order; the tag follows @subpackage (if used) or @package" source="PEAR.Commenting.ClassComment.WrongTagOrder"/>
+  <error line="9" column="1" severity="error" message="@author tag comment indented incorrectly; expected 2 spaces but found 1" source="PEAR.Commenting.ClassComment.TagIndent"/>
+  <error line="10" column="1" severity="warning" message="Invalid version &quot;$Id: 722254b68b4e7a4420fb5994ed3e14adbf85818f $&quot; in doc comment; consider &quot;Release: &lt;package_version&gt;&quot; instead" source="PEAR.Commenting.ClassComment.InvalidVersion"/>
+  <error line="10" column="1" severity="error" message="The @version tag is in the wrong order; the tag follows @license" source="PEAR.Commenting.ClassComment.WrongTagOrder"/>
+  <error line="11" column="1" severity="error" message="Package name &quot;hello.world&quot; is not valid; consider &quot;Helloworld&quot; instead" source="PEAR.Commenting.ClassComment.InvalidPackage"/>
+  <error line="12" column="1" severity="error" message="Missing @category tag in class comment" source="PEAR.Commenting.ClassComment.MissingTag"/>
+  <error line="12" column="1" severity="error" message="Content of the @author tag must be in the form &quot;Display Name &lt;username@example.com&gt;&quot;" source="PEAR.Commenting.ClassComment.InvalidAuthors"/>
+  <error line="12" column="1" severity="error" message="Missing @license tag in class comment" source="PEAR.Commenting.ClassComment.MissingTag"/>
+  <error line="12" column="1" severity="error" message="Missing @link tag in class comment" source="PEAR.Commenting.ClassComment.MissingTag"/>
+  <error line="13" column="5" severity="error" message="Line indented incorrectly; expected 0 spaces, found 4" source="PEAR.WhiteSpace.ScopeIndent.Incorrect"/>
+  <error line="14" column="5" severity="error" message="Expected 0 spaces before opening brace; 4 found" source="PEAR.Classes.ClassDeclaration.SpaceBeforeBrace"/>
+  <error line="15" column="16" severity="error" message="Line indented incorrectly; expected 4 spaces, found 8" source="PEAR.WhiteSpace.ScopeIndent.Incorrect"/>
+  <error line="15" column="16" severity="error" message="Missing function doc comment" source="PEAR.Commenting.FunctionComment.Missing"/>
+ </file>
+</checkstyle>
