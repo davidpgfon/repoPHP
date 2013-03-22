@@ -18,23 +18,23 @@
         {
             return "Hello World!";
         }
-function sayHello()
+function sayHello2()
         {
             return "Hello World!";
         }
-function sayHello()
+function sayHello3()
         {
             return "Hello World!";
         }
-function sayHello()
+function sayHello4()
         {
             return "Hello World!";
         }
-function sayHello()
+function sayHello5()
         {
             return "Hello World!";
         }
-function sayHello()
+function sayHello6()
         {
             return "Hello World!";
         }
