@@ -1,6 +1,11 @@
 <?xml version="1.0"?>
 
-<project name="Hello World Example" default="build" description="This is an example buildfile for Phing.">
+<project name="Hello World Example" default="build" basedir="." description="This is an example buildfile for Phing.">
+
+ <property name="basedir" value="${project.basedir}" />
+ <property name="source" value="${basedir}/src"/>
+
+
 	<target name="prepare">
 		<mkdir dir="reports/coverage"/>
 		<mkdir dir="reports/tests"/>
@@ -43,51 +48,57 @@
 				    </foreach>
 				  </target>
 
-				  <target name="phpmd"
-					  description="Generate pmd.xml using PHPMD"
-					 >
-
-				    <phpmd rulesets="codesize,naming,design">
-				      <fileset dir="src">
-					<include name="HelloWorld.php"/></fileset>
-				      <formatter type="xml" outfile="reports/pmd.xml"/>
-				    </phpmd>
-				  </target>
-
-
-				  <target name="phpcpd"
-					  description="Generate pmd-cpd.xml using phpcpd"
-					  >
-				    <phpcpd>
-				      <fileset dir="src">
-					<include name="HelloWorld.php"/></fileset>
-				      <formatter type="pmd" outfile="reports/pmd-cpd.xml"/>
-				    </phpcpd>
-				  </target>
-
-				  <target name="phploc"
-					  description="Generate phploc.csv using phploc"
-					  >
-				    <phploc reportType="csv"
-					    reportName="phploc" reportDirectory="reports"
-					    suffixes="php,module,inc,install,profile,test" countTests="true">
-				      <fileset dir="src">
-					<include name="HelloWorld.php"/></fileset>
-				    </phploc>
-				  </target>
-
-				   
+		
 
 
 
+				<target name="phpcpd" description="Generate pmd-cpd.xml using PHPCPD">
+				  <exec logoutput="true"
+					command="phpcpd --log-pmd ${basedir}/reports2/pmd-cpd.xml ${source}" />
+				 </target>
 
+
+				<target name="phpcs" description="Generate checkstyle.xml using PHP_CodeSniffer">
+				  <exec logoutput="true"
+					command="phpcs --report=checkstyle --report-file=${basedir}/reports2/checkstyle.xml 
+					--standard=PEAR ${source}" />
+				 </target>
+
+				<target name="phploc" description="Generate phploc.csv">
+				  <exec logoutput="true"
+					command="phploc --log-csv ${basedir}/reports2/phploc.csv ${source}" />
+				 </target>
+				
+				<target name="phpmd" description="Generate pmd.xml using PHPMD">
+				  <exec logoutput="true" spawn="true"
+					command="phpmd ${source} xml codesize,design,naming,unusedcode 
+					--reportfile ${basedir}/reports2/pmd.xml" />
+				 </target>
+
+				<target name="pdepend" description="Generate jdepend.xml and software metrics charts using PHP_Depend">
+					  <exec logoutput="true"
+						command="pdepend --jdepend-xml=${basedir}/reports2/pdepend/jdepend.xml 
+						--jdepend-chart=${basedir}/reports2/pdepend/dependencies.svg 
+						--overview-pyramid=${basedir}/reports2/pdepend/overview-pyramid.svg ${source}" />
+					 </target>
+
+				<target name="phpdoc" description="Generate API documentation using PHPDocumentor">
+				  <exec logoutput="true"
+					command="phpdoc -d ${source} -t ${basedir}/reports2/api" />
+				 </target>
+
+				<target name="phpunit2" description="Run unit tests using PHPUnit and generates junit.xml and clover.xml">
+				   <exec logoutput="true"
+					 command="phpunit ${basedir}/src" />
+				 </target>
+
+				
  
   
 	
 
-	
 
-	<target name="build" depends="prepare,lint-php,lint-js,phpmd,phpcpd,phploc,test">
+	<target name="build" depends="prepare,lint-php,lint-js,phpcpd,phpcs,phploc,phpmd,pdepend,phpdoc,test,phpunit2">
 		<zip destfile="helloworld.zip" basedir="src"/>
 		<tar destfile="helloworld.tar" basedir="src"/>
 	</target>
